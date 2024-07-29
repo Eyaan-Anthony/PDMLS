@@ -1,0 +1,81 @@
+{% extends "pd_app/home.html"%}
+
+{% block header %}
+{% load static%}
+<link rel="stylesheet"  href="{% static 'pd_app/profile.css' %}" />
+
+<div class="folder-box">
+
+    <form class="folder-selection" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="Detect Phishing attempts" class="submit-btn">
+    </form>
+
+    <div class = "results">
+        <br/>
+        <h1>Email Analysis Results for {{ username }}</h1>
+        <br/>
+        <p><strong>{{phishing_count}}</strong> attempts detected.</p>
+        <p><strong>{{url_count}}</strong> Urls detected.</p>
+
+        <br/>
+        <div class="scrollable-tables">
+            <h2>Phishing Attempts ({{ phishing_count }})</h2>
+            <div class="">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Message-ID</th>
+                            <th>Header Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attempt in phishing_attempts %}
+                            <tr>
+                                <td>{{ attempt.0 }}</td>
+                                <td>{{ attempt.1|join:", " }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+            <h2>Malicious URLs ({{ url_count }})</h2>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Malicious URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if malicious_urls %}
+                            {% for url in malicious_urls %}
+                                <tr>
+                                    <td>{{ url }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="1">No malicious URLs detected.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <br/>
+            
+
+        {% if folder == 'inbox' %}
+            <Button class="move-spam">Move to spam folder</Button>
+        {% else %}
+            <Button class="delete">Delete Emails</Button>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock header %}

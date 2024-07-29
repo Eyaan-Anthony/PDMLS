@@ -1,0 +1,26 @@
+{% extends "pd_app/home.html" %}
+
+{% block header%}
+
+{% load static%}
+<link rel="stylesheet"  href="{% static 'pd_app/login.css' %}" />
+
+<div class="login-box">
+    <div class="person-icon">
+        <i></i>
+    </div>
+    <div class="user-information">
+        <form class = "identification" method="post" action="/login">
+            
+            {% csrf_token %} 
+            
+            {{form}}
+            
+
+            <input type="submit" value="Login" class="submit-btn">
+        </form>
+    </div>
+
+</div>
+
+{% endblock header%}

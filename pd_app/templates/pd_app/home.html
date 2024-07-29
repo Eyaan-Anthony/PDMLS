@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+        <meta charset="utf-8" />
+        <title>Phishing Detection</title>
+        {% load static %}
+        <link rel="stylesheet"  href="{% static 'pd_app/site.css' %}" />
+        {% endblock title %}
+    </head>
+    <body>
+        <!--navbar, kind of at least-->
+        {% block navbar %}
+        <div class="navbar">
+            <div class= "service">
+                <div class="service-img"><img src="{% static 'pd_app/phishing.png' %}" alt="Phishing icon"></div>
+                <a href="#">P<span>DS</span></a>
+            </div>
+
+        </div>
+        {% endblock navbar%}
+
+        <!--Header section-->
+        <header class="header">
+            {% block header %}
+            <div class="header-content">
+                <h1 class = "service_header">Phishing Detection Service using Machine Learning</h1>
+                <a href= '{% url "LoginView" %}'><Button class="start">Getting Started</Button></a>
+            </div>
+            {% endblock header %}
+        </header>
+
+        <!-- service description-->
+
+        <!--footer-->
+        <footer class="footer">
+            {% block footer %}
+            <div class="socials">
+                <i class = "fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-github"></i>
+            </div>
+            <p>Powered by <a href=#>University of buea, FET</a></p>
+            {% endblock footer%}
+        </footer>
+    </body>
+</html>

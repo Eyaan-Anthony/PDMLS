@@ -1,0 +1,35 @@
+.folder-box {
+    height: 100vh; /* Full viewport height */
+}
+
+.scrollable-tables {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    border: 1px solid #ddd; /* Optional: adds a border for clarity */
+    padding: 10px; /* Optional: adds padding inside the container */
+    margin: 20px 0; /* Optional: space around the container */
+}
+
+.result{
+    height: 700px;
+    padding: 20px;
+    max-height: 500px;  /* Set max height for scrolling */
+      /* Enable vertical scrolling */
+    margin-bottom: 20px; /* Spacing between sections */
+}
+
+
+
+table {
+    width: 100%; /* Make table width responsive */
+    border-collapse: collapse; /* Remove space between borders */
+}
+
+th, td {
+    padding: 10px; /* Add padding for better readability */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+th {
+    background-color: #f2f2f2; /* Header background color */
+}
